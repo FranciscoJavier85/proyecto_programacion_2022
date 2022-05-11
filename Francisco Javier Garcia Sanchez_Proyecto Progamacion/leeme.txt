@@ -1,0 +1,8 @@
+Programa que simula parte de una ferretería.
+Se podrá ver el listado de stock sin registrarse. 
+Pero para comprar debe tener cuenta, se comprueba que el dni sea correcto.
+El cliente podra comprar y revisar sus ventas
+
+El empleado puede ver todas las compras, añadir y borrar productos y sumar stock.
+
+En las ventas se guarda, el número de venta, el número del cliente, la fecha y el total

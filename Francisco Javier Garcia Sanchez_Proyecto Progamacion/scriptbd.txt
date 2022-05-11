@@ -1,0 +1,50 @@
+DROP DATABASE IF EXISTS almacen;
+CREATE DATABASE almacen CHARACTER SET utf8mb4;
+USE almacen;
+
+
+CREATE TABLE cliente(
+    codigo_cliente 	int NOT NULL AUTO_INCREMENT,
+    nombre		varchar(100),
+    ciudad 	varchar(100),
+    dni varchar(9) UNIQUE,
+    contraseña varchar(4) default "111a",
+    PRIMARY KEY (codigo_cliente)
+);
+
+INSERT INTO cliente(nombre, ciudad, dni, contraseña) VALUES("Pepe", "Aguilas", "147a","123a");
+INSERT INTO cliente(nombre, ciudad, dni, contraseña) VALUES("Mariano", "Aguilas", "258a","124a");
+
+
+CREATE TABLE empleado(
+    codigo_empleado 	int UNSIGNED NOT NULL AUTO_INCREMENT,
+    nombre		varchar(100),
+    ciudad 	varchar(100),
+    dni varchar(9) UNIQUE,
+    contraseña varchar(4),
+    PRIMARY KEY (codigo_empleado)
+);
+
+INSERT INTO empleado(nombre, ciudad, dni, contraseña) VALUES("Mortadelo", "Aguilas", "258c","963a");
+
+CREATE TABLE producto(
+    referencia varchar(100) ,
+    nombre		varchar(100),
+    precio decimal(10,2),
+    cantidad int(10),
+    PRIMARY KEY (referencia)
+);
+INSERT INTO producto(referencia,nombre,precio,cantidad) VALUES("REF100", "Pilas Alcalinas", 2,20);
+INSERT INTO producto(referencia,nombre,precio,cantidad) VALUES("REF101", "Destornillador", 5,20);
+INSERT INTO producto(referencia,nombre,precio,cantidad) VALUES("REF102", "Sarten", 30,9);
+INSERT INTO producto(referencia,nombre,precio,cantidad) VALUES("REF103", "Bombilla", 5,100);
+
+
+CREATE TABLE ventas(
+    id_venta int(10)  AUTO_INCREMENT,
+    codigo_cliente int(10),
+    fecha_venta DAte,
+    total decimal(10,2),
+    PRIMARY KEY(id_venta),
+    FOREIGN KEY (codigo_cliente) REFERENCES  cliente(codigo_cliente)
+    );
